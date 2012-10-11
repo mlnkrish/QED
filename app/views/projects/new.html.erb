@@ -1,0 +1,13 @@
+<% if flash[:error] %>
+	<div class="alert alert-error">
+		<%= flash[:error] %>
+	</div>
+<% end %>
+<%= form_tag("/projects", :class => "form-horizontal") do %>
+	<legend>Create project</legend>
+	<div class="control-group">
+		<%= label_tag(:project_name, "Project name:", :class => "control-label") %>
+		<%= text_field_tag(:project_name, @project_name , :class => "controls") %>
+	</div>
+	<%= submit_tag("create",:class =>"btn btn-primary") %>
+<% end %>

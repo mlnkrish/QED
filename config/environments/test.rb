@@ -30,8 +30,12 @@ Qed::Application.configure do
   config.action_mailer.delivery_method = :test
 
   # Raise exception on mass assignment protection for Active Record models
-  config.active_record.mass_assignment_sanitizer = :strict
+  # config.active_record.mass_assignment_sanitizer = :strict
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  config.redis_host = "127.0.0.1"
+  config.redis_port = 6379
+  config.redis_db = 1
 end
