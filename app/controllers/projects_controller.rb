@@ -6,19 +6,17 @@ class ProjectsController < ApplicationController
 
  def create
  	project_name = params[:project_name]
- 	@project = nil
- 	begin
- 		@project = Project.create project_name
- 	rescue Exceptions::EntityExists => e
- 		flash[:error] = "The project with this name alredy exists"
-		redirect_to :action => :new, :project_name => project_name 
-		return	
-	end	
+ 	@project = Project.create project_name
 	flash[:success] = "Created project #{project_name}"
- 	redirect_to :action => :edit, :id => @project.id
+ 	redirect_to :action => :show, :id => @project.id
  end
 
- def edit
+ def show
+ 	id = params[:id]
+  @project = Project.find_by_id id
+  if @project == nil 
+    not_found
+  end
  end
 
 end

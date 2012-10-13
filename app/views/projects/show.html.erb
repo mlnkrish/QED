@@ -1,0 +1,39 @@
+<% if flash[:success] %>
+	<div class="alert alert-success">
+		<%= flash[:success] %>
+	</div>
+<% end %>
+
+<div class="page-header">
+  <h3><%= @project.name  %></h3>
+</div>
+
+<div class="btn-toolbar">
+  <div class="btn-group">
+    <a class="btn btn-inverse" href="#"><i class="icon-pencil"></i></a>
+  </div>
+</div>
+
+<p class="lead well">
+  Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+
+  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
+</p>
+
+<ul class="nav nav-tabs" id="project-nav">
+  <li class="active"><a href="#technical">Technical</a></li>
+  <li><a href="#analysis">Analysis</a></li>
+  <li><a href="#testing">Testing</a></li>
+  <li><a href="#project-management">Project Management</a></li>
+  <li><a href="#team">Team</a></li>
+</ul>
+ 
+<div class="tab-content">
+  <div class="tab-pane active" id="technical">
+
+  </div>
+  <div class="tab-pane" id="analysis">...</div>
+  <div class="tab-pane" id="testing">...</div>
+  <div class="tab-pane" id="project-management">...</div>
+  <div class="tab-pane" id="team">...</div>
+</div>

@@ -13,16 +13,19 @@ describe "project" do
 			project.name.should == "world domination"
 			project.id.should_not == nil
 		end
-		
-		it "should downcase name when create a new project" do
-			project = Project.create "   worldDomination   "
-			project.name.should == "worlddomination"
-			project.id.should_not == nil
+	end
+
+	describe "finding a project" do
+		it "should find project by id" do
+			project = Project.create "world domination"
+
+			saved_project = Project.find_by_id project.id
+			saved_project.name.should == "world domination"
+			saved_project.id.should == project.id
 		end
 
-		it "should raise error when trying to create two projects with the same name" do
-			project = Project.create "   worldDomination   "
-			expect { Project.create("worldDomination") }.should raise_error(Exceptions::EntityExists)
+		it "should get nil when project with specified is does not exist" do
+			Project.find_by_id("random key").should == nil
 		end
 	end
 end

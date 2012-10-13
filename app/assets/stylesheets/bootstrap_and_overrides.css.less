@@ -21,7 +21,7 @@
 // Since bootstrap was imported above you have access to its mixins which
 // you may use and inherit here
 //
-// If you'd like to override bootstrap's own variables, you can do so here as well
+// If you"d like to override bootstrap"s own variables, you can do so here as well
 // See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
 //
 // Example:
@@ -34,4 +34,19 @@ body {
   body {
     padding-top: 0px;
   }
+}
+
+@font-face {
+  font-family: "chromeblack";
+  src: url("chromeblack-normal-webfont.eot");
+  src: url("chromeblack-normal-webfont.eot?#iefix") format("embedded-opentype"),
+       url("chromeblack-normal-webfont.woff") format("woff"),
+       url("chromeblack-normal-webfont.ttf") format("truetype"),
+       url("chromeblack-normal-webfont.svg#chromeblack") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.brand {
+  font-family: "chromeblack";
 }

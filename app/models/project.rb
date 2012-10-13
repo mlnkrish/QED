@@ -1,5 +1,5 @@
 class Project
-	attr_accessor :id, :name
+	attr_accessor :id, :name, :languages, :frameworks
 
 	def initialize(id,name)
 		@id = id
@@ -8,12 +8,18 @@ class Project
 
 	def self.create(name)
 		id = SecureRandom.uuid
-		project_name = name.strip.downcase
-		created = $redis.hsetnx "projects", project_name, id
-		if created
-			Project.new id, project_name
-		else
-			raise Exceptions::EntityExists
+		project_name = name.strip
+    $redis.hmset "projects:#{id}","id","#{id}","name","#{project_name}"
+		$redis.sadd "projects","#{id}"
+		Project.new id, project_name
+	end
+
+	def self.find_by_id(id)
+		project = nil;
+		if $redis.exists "projects:#{id}"
+			name = $redis.hget "projects:#{id}","name"
+			project = Project.new id,name
 		end
+		project
 	end
 end
