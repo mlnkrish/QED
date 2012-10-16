@@ -38,4 +38,24 @@ describe "project" do
 			saved_project.languages.should =~ ['Ruby','Java','C#']
 		end
 	end
+
+	describe "adding frameworks to project" do
+		it "should assign languages to a project" do
+			project = Project.create "world domination"
+			project.assign_frameworks ['Rails','Spring-MVC']
+
+			saved_project = Project.find_by_id project.id
+			saved_project.frameworks.should =~ ['Rails','Spring-MVC']
+		end
+	end
+
+	describe "adding vcs to project" do
+		it "should assign languages to a project" do
+			project = Project.create "world domination"
+			project.assign_vcs ['Git','CVS']
+
+			saved_project = Project.find_by_id project.id
+			saved_project.vcs.should =~ ['Git','CVS']
+		end
+	end
 end

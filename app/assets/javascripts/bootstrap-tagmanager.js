@@ -54,6 +54,10 @@
       var queuedTag = "";
       var delimeters = tagManagerOptions.delimeters;
       var backspace = tagManagerOptions.backspace;
+      
+      if(tagManagerOptions.tagsContainer == null){
+        tagManagerOptions.tagsContainer = jQuery("#"+objName+"-container"); 
+      }
 
       var setupTypeahead = function () {
          if(!obj.typeahead) return;

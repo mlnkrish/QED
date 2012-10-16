@@ -14,6 +14,8 @@ Qed::Application.routes.draw do
   #   resources :products
   resources :projects do
     resources :languages, :controller => "project_languages"
+    resources :frameworks, :controller => "project_frameworks"
+    resources :vcs, :controller => "project_vcs"
   end
 
 

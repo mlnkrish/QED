@@ -45,19 +45,19 @@
       <h5>
         Frameworks
         <a id="framework-edit-icon" title="edit" class="edit-icon" href="#"><i class="icon-edit"></i></a>
-        <a id="framework-done-icon" title="done" class="done-icon hide" href="#"><i class="icon-check"></i></a>
+        <a id="framework-done-icon" title="done" class="done-icon hide" href='<%= "/projects/#{@project.id}/frameworks"%>'><i class="icon-check"></i></a>
       </h5>
-      <div id="frameworks-tags-container" class="clearfix"></div>
-      <input id="input-framework" url='' type="text" name="framework-tags" placeholder="add framework" class="framework-tag-manager tagManager"/>
+      <div id="framework-tags-container" class="clearfix"></div>
+      <input id="input-framework" type="text" name="framework-tags" placeholder="add framework" value="<%= @project.frameworks.join(",")%>" class="framework-tag-manager tagManager"/>
     </div>
     <div id="vcs" class="span4">
       <h5 class="">
         VCS
         <a id="vcs-edit-icon" title="edit" class="edit-icon" href="#"><i class="icon-edit"></i></a>
-        <a id="vcs-done-icon" title="done" class="done-icon hide" href="#"><i class="icon-check"></i></a>
+        <a id="vcs-done-icon" title="done" class="done-icon hide" href='<%= "/projects/#{@project.id}/vcs" %>'><i class="icon-check"></i></a>
       </h5>
       <div id="vcs-tags-container" class="clearfix"></div>
-      <input id="input-vcs" type="text" name="vcs-tags" placeholder="add vcs" class="vcs-tag-manager tagManager"/>
+      <input id="input-vcs" type="text" name="vcs-tags" placeholder="add vcs" value="<%= @project.vcs.join(",")%>"class="vcs-tag-manager tagManager"/>
     </div>
   </div>
   </div>

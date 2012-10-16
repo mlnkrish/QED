@@ -5,21 +5,17 @@ $(document).ready(
   		$(this).tab('show');
 		})
 
-    $(".language-tag-manager").tagsManager({
-      tagsContainer: $("#language-tags-container"),
-      typeahead: true,
-      tagCloseIcon: '<i class="icon-remove-sign"></i>'
-    }).typeahead({
-      source: []
+    $(".tagManager").each(function(){
+      $(this).tagsManager({
+        typeahead: true,
+        tagCloseIcon: '<i class="icon-remove-sign"></i>'
+      }).typeahead({
+        source: []
+      });  
     });
 
-    $(".framework-tag-manager").tagsManager({
-      tagsContainer: $("#frameworks-tags-container"),
-      typeahead: true,
-      tagCloseIcon: '<i class="icon-remove-sign"></i>'
-    }).typeahead({
-      source: []
-    });
+
+    
 
     $(".edit-icon").click(function(){
       var context = $(this).attr("id").split("-")[0];
@@ -37,7 +33,7 @@ $(document).ready(
       
       $.ajax({
         url : updateUrl,
-        data : "languages="+dataToUpdate,
+        data : "data="+encodeURIComponent(dataToUpdate),
         type : "POST",
         success : function(){
           $("#input-"+context).hide();    
