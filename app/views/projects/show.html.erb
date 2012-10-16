@@ -8,14 +8,8 @@
   <h3><%= @project.name  %></h3>
 </div>
 
-<!-- <div class="btn-toolbar">
-  <div class="btn-group">
-    <a class="btn btn-small btn-inverse" href="#"><i class="icon-pencil"></i></a>
-  </div>
-</div>
- -->
 <h4>About</h4>
-<p class="well">
+<p id="about" class="well">
   Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
 
   Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
@@ -32,34 +26,41 @@
 <div id="project-details" class="tab-content">
   <div class="tab-pane active" id="technical">
     <div class="row">
-    <div id="language" class="span4">
-      <h5>
-        Languages
-        <a id="language-edit-icon" title="edit" class="edit-icon" href="#"><i class="icon-edit"></i></a>
-        <a id="language-done-icon" title="done" class="done-icon hide" href='<%= "/projects/#{@project.id}/languages"%>'><i class="icon-check"></i></a>
-      </h5>
-      <div id="language-tags-container" class="clearfix"></div>
-      <input id="input-language" type="text" name="language-tags" placeholder="add language" value="<%= @project.languages.join(",")%>" class="language-tag-manager tagManager"/>
+      <div id="language" class="span4">
+        <h5>
+          Languages
+          <button id="language-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
+          <button id="language-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/languages"%>'>save</button>
+        </h5>
+        <div id="language-tags-container" class="clearfix"></div>
+        <input id="input-language" type="text" name="language-tags" placeholder="add language" value="<%= @project.languages.join(",")%>" class="language-tag-manager tagManager"/>
+      </div>
+      <div id="framework" class="span4">
+        <h5>
+          Frameworks
+          <button id="language-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
+          <button id="language-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/frameworks"%>'>save</button>
+        </h5>
+        <div id="framework-tags-container" class="clearfix"></div>
+        <input id="input-framework" type="text" name="framework-tags" placeholder="add framework" value="<%= @project.frameworks.join(",")%>" class="framework-tag-manager tagManager"/>
+      </div>
+      <div id="vcs" class="span4">
+        <h5 class="">
+          VCS
+          <button id="language-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
+          <button id="language-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/vcs"%>'>save</button>
+        </h5>
+        <div id="vcs-tags-container" class="clearfix"></div>
+        <input id="input-vcs" type="text" name="vcs-tags" placeholder="add vcs" value="<%= @project.vcs.join(",")%>"class="vcs-tag-manager tagManager"/>
+      </div>
     </div>
-    <div id="framework" class="span4">
-      <h5>
-        Frameworks
-        <a id="framework-edit-icon" title="edit" class="edit-icon" href="#"><i class="icon-edit"></i></a>
-        <a id="framework-done-icon" title="done" class="done-icon hide" href='<%= "/projects/#{@project.id}/frameworks"%>'><i class="icon-check"></i></a>
-      </h5>
-      <div id="framework-tags-container" class="clearfix"></div>
-      <input id="input-framework" type="text" name="framework-tags" placeholder="add framework" value="<%= @project.frameworks.join(",")%>" class="framework-tag-manager tagManager"/>
+    <div class="row">
+      <div class="span12">
+      <div class="page-header sub-heading">
+        <h5>Content</h5>
+      </div>
+      </div>
     </div>
-    <div id="vcs" class="span4">
-      <h5 class="">
-        VCS
-        <a id="vcs-edit-icon" title="edit" class="edit-icon" href="#"><i class="icon-edit"></i></a>
-        <a id="vcs-done-icon" title="done" class="done-icon hide" href='<%= "/projects/#{@project.id}/vcs" %>'><i class="icon-check"></i></a>
-      </h5>
-      <div id="vcs-tags-container" class="clearfix"></div>
-      <input id="input-vcs" type="text" name="vcs-tags" placeholder="add vcs" value="<%= @project.vcs.join(",")%>"class="vcs-tag-manager tagManager"/>
-    </div>
-  </div>
   </div>
   <div class="tab-pane" id="analysis">...</div>
   <div class="tab-pane" id="testing">...</div>
