@@ -6,7 +6,6 @@ $(document).ready(
 		})
 
     $(".language-tag-manager").tagsManager({
-      prefilled: [],
       tagsContainer: $("#language-tags-container"),
       typeahead: true,
       tagCloseIcon: '<i class="icon-remove-sign"></i>'
@@ -15,7 +14,6 @@ $(document).ready(
     });
 
     $(".framework-tag-manager").tagsManager({
-      prefilled: [],
       tagsContainer: $("#frameworks-tags-container"),
       typeahead: true,
       tagCloseIcon: '<i class="icon-remove-sign"></i>'
@@ -34,14 +32,28 @@ $(document).ready(
 
     $(".done-icon").click(function(){
       var context = $(this).attr("id").split("-")[0];
-      $("#input-"+context).hide();
-      $("#"+context+" .myTagRemover").hide();
-      $("#"+context+"-done-icon").hide();
-      $("#"+context+"-edit-icon").show();
+      var updateUrl = $(this).attr("href");
+      var dataToUpdate = $("#input-"+context).data("tlis").join(",");
+      
+      $.ajax({
+        url : updateUrl,
+        data : "languages="+dataToUpdate,
+        type : "POST",
+        success : function(){
+          $("#input-"+context).hide();    
+          $("#"+context+" .myTagRemover").hide();
+          $("#"+context+"-done-icon").hide();
+          $("#"+context+"-edit-icon").show();
+        },
+        error : function(){
+          alert("ERROR HAPPENED");
+        }
+      });
+
       return false;
     });
 
-    $(".myTagRemover").hide()
-    $(".tagManager").hide()
+    $(".myTagRemover").hide();
+    $(".tagManager").hide();
 
 })

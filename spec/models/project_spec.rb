@@ -28,4 +28,14 @@ describe "project" do
 			Project.find_by_id("random key").should == nil
 		end
 	end
+
+	describe "adding language to project" do
+		it "should assign languages to a project" do
+			project = Project.create "world domination"
+			project.assign_languages ['Ruby','Java','C#']
+
+			saved_project = Project.find_by_id project.id
+			saved_project.languages.should =~ ['Ruby','Java','C#']
+		end
+	end
 end

@@ -1,0 +1,48 @@
+Realational
+___________
+Tags 
+t1 mt1
+t2 mt1
+t3 mt2
+
+ProjectTags 
+p1 t1
+p1 t2
+p1 t3
+
+ProjectContents
+p1 c1
+p1 c2
+p1 c3
+
+ContentTags
+c1 t1
+c1 t2
+c1 t3
+
+Content
+c1
+c2
+c3
+
+Project
+p1
+p2
+p3
+
+Redis
+_____
+Tags => [t1,t2,t3,t4]
+Tags:t1 => {meta:mt1}
+Tags:t1:Projects => [p1,p2,p3]
+Tags:t1:Contents => [c1,c2,c3]
+
+
+MetaTags => [mt1,mt2,mt3]
+MetaTags:mt1 => {tags:[t1,t2,t3]}
+
+Projects => [p1,p2,p3]
+Projects:p1 => {tags:[t1,t2,t3], content:[c1,c2,c3]}
+
+Contents => [c1,c2,c3]
+Contents:c1 => {tags:[t1,t2,t3], project:[p1,p2,p3]}

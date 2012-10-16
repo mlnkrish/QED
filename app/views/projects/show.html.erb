@@ -39,7 +39,7 @@
         <a id="language-done-icon" title="done" class="done-icon hide" href='<%= "/projects/#{@project.id}/languages"%>'><i class="icon-check"></i></a>
       </h5>
       <div id="language-tags-container" class="clearfix"></div>
-      <input id="input-language" type="text" name="language-tags" placeholder="add language" class="language-tag-manager tagManager"/>
+      <input id="input-language" type="text" name="language-tags" placeholder="add language" value="<%= @project.languages.join(",")%>" class="language-tag-manager tagManager"/>
     </div>
     <div id="framework" class="span4">
       <h5>
@@ -57,7 +57,7 @@
         <a id="vcs-done-icon" title="done" class="done-icon hide" href="#"><i class="icon-check"></i></a>
       </h5>
       <div id="vcs-tags-container" class="clearfix"></div>
-      <input id="input-vcs" type="text" name="framework-tags" placeholder="add framework" class="vcs-tag-manager tagManager"/>
+      <input id="input-vcs" type="text" name="vcs-tags" placeholder="add vcs" class="vcs-tag-manager tagManager"/>
     </div>
   </div>
   </div>

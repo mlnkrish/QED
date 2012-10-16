@@ -400,7 +400,16 @@
                   pushTag(val, obj);
                });
 
-            }
+            } 
+         } else if (obj.val() != "") {
+            var pta = obj.val().split(',');
+
+            jQuery.each(pta, function (key, val) {
+               var a = 1;
+               pushTag(val, obj);
+            });         
+                  
+            obj.val("");
          }
       });
 
