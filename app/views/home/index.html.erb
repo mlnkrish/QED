@@ -1,0 +1,19 @@
+<div class="span6">
+  <ul class="thumbnails">
+    <% @all_projects.each do |project| %>
+      <li class="span3">
+        <div class="thumbnail">
+          <div class="caption">
+          <h3><%= project.name%></h3>
+          <p>
+            Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+          </p>
+          <p>
+            <%= link_to "View", project_path(project.id), :class => "btn btn-primary" %>
+          </p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

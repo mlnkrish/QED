@@ -12,11 +12,14 @@ Qed::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :projects do
-    resources :languages, :controller => "project_languages"
-    resources :frameworks, :controller => "project_frameworks"
-    resources :vcs, :controller => "project_vcs"
-  end
+  resources :projects 
+
+  match 'projects/:project_id/languages' => 'projects#assign_languages', :via => :put
+  match 'projects/:project_id/frameworks' => 'projects#assign_frameworks', :via => :put
+  match 'projects/:project_id/vcs' => 'projects#assign_vcs', :via => :put
+  match 'projects/:project_id/ci' => 'projects#assign_ci', :via => :put
+  match 'projects/:project_id/build-tools' => 'projects#assign_build_tools', :via => :put
+  match 'projects/:project_id/infrastucture-management-tools' => 'projects#assign_infrastructure_management_tools', :via => :put
 
 
   # Sample resource route with options:
@@ -54,7 +57,7 @@ Qed::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'projects#new'
+   root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

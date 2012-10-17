@@ -1,0 +1,65 @@
+<div class="row">
+  <div id="language" class="span4">
+    <h5>
+      Languages
+      <button id="language-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
+      <button id="language-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/languages"%>'>save</button>
+    </h5>
+    <div id="language-tags-container" class="clearfix"></div>
+    <input id="input-language" type="text" name="language-tags" value="<%= @project.languages.join(",")%>" class="language-tag-manager tagManager"/>
+  </div>
+  <div id="framework" class="span4">
+    <h5>
+      Frameworks
+      <button id="framework-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
+      <button id="framework-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/frameworks"%>'>save</button>
+    </h5>
+    <div id="framework-tags-container" class="clearfix"></div>
+    <input id="input-framework" type="text" name="framework-tags" value="<%= @project.frameworks.join(",")%>" class="framework-tag-manager tagManager"/>
+  </div>
+  <div id="vcs" class="span4">
+    <h5>
+      Version Control
+      <button id="vcs-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
+      <button id="vcs-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/vcs"%>'>save</button>
+    </h5>
+    <div id="vcs-tags-container" class="clearfix"></div>
+    <input id="input-vcs" type="text" name="vcs-tags" value="<%= @project.vcs.join(",")%>" class="vcs-tag-manager tagManager"/>
+  </div>
+</div>
+<div class="row">
+  <div id="build" class="span4">
+    <h5>
+      Build Tools
+      <button id="bt-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
+      <button id="bt-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/build-tools"%>'>save</button>
+    </h5>
+    <div id="bt-tags-container" class="clearfix"></div>
+    <input id="input-bt" type="text" name="bt-tags" value="<%= @project.build_tools.join(",")%>" class="bt-tag-manager tagManager"/>
+  </div>
+  <div id="ci" class="span4">
+    <h5>
+      CI
+      <button id="ci-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
+      <button id="ci-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/ci"%>'>save</button>
+    </h5>
+    <div id="ci-tags-container" class="clearfix"></div>
+    <input id="input-ci" type="text" name="ci-tags" value="<%= @project.ci.join(",")%>" class="ci-tag-manager tagManager"/>
+  </div>
+  <div id="infrastructure" class="span4">
+    <h5>
+      Infrastructure Management
+      <button id="infrastructure-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
+      <button id="infrastructure-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/infrastucture-management-tools"%>'>save</button>
+    </h5>
+    <div id="infrastructure-tags-container" class="clearfix"></div>
+    <input id="input-infrastructure" type="text" name="infrastructure-tags" value="<%= @project.infrastructure_tools.join(",")%>" class="infrastructure-tag-manager tagManager"/>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+  <div class="page-header sub-heading">
+    <h5>Content</h5>
+  </div>
+  </div>
+</div>

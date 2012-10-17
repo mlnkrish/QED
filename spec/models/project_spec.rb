@@ -27,6 +27,19 @@ describe "project" do
 		it "should get nil when project with specified is does not exist" do
 			Project.find_by_id("random key").should == nil
 		end
+
+		it "should get all project in the system" do
+			project1 = Project.create "world domination"
+			project2 = Project.create "more world domination"
+			all_projects = Project.find_all
+
+			names = all_projects.map do |p|
+				p.name
+			end
+
+			names.should include("world domination")
+			names.should include("more world domination")
+		end
 	end
 
 	describe "adding language to project" do

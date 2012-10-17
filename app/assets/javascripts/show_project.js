@@ -13,8 +13,6 @@ $(document).ready(
         source: []
       });  
     });
-
-
     
 
     $(".edit-icon").click(function(){
@@ -34,7 +32,7 @@ $(document).ready(
       $.ajax({
         url : updateUrl,
         data : "data="+encodeURIComponent(dataToUpdate),
-        type : "POST",
+        type : "PUT",
         success : function(){
           $("#input-"+context).hide();    
           $("#"+context+" .myTagRemover").hide();
