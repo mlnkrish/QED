@@ -55,4 +55,22 @@ class ProjectsController < ApplicationController
    render :nothing => true
  end
 
+ def assign_operating_system
+   project = Project.find_by_id params[:project_id]
+   project.assign_operating_system params[:data]
+   render :nothing => true
+ end
+
+ def assign_off_the_shelf_products
+   project = Project.find_by_id params[:project_id]
+   project.assign_off_the_shelf_products params[:data]
+   render :nothing => true
+ end
+
+ def assign_cloud_usage
+   project = Project.find_by_id params[:project_id]
+   project.assign_cloud_usage params[:data]
+   render :nothing => true
+ end
+
 end

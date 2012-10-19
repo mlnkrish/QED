@@ -1,5 +1,7 @@
 class Project
-	attr_reader :id, :name, :languages, :frameworks, :vcs, :build_tools, :ci, :infrastructure_tools
+	attr_reader :id, :name, :languages, :frameworks, :vcs, :build_tools,
+							:ci, :infrastructure_tools, :operating_system, 
+							:off_the_shelf_products, :cloud_usage
 
 	def initialize(params)
 		@id = params["id"]
@@ -30,6 +32,8 @@ class Project
 		end 
 	end
 
+
+	# Will do some fancy meta-programming to remove all this nonsense
 	def rget(attribute)
 		$redis.smembers "projects:#{@id}:"+attribute
 	end
@@ -76,39 +80,68 @@ class Project
 		@infrastructure_tools
 	end
 
+	def operating_system
+		if(@operating_system.nil?)
+			@operating_system = rget "operating-system"
+		end
+		@operating_system
+	end
+
+	def off_the_shelf_products
+		if(@off_the_shelf_products.nil?)
+			@off_the_shelf_products = rget "products"
+		end
+		@off_the_shelf_products
+	end
+
+	def cloud_usage
+		if(@cloud_usage.nil?)
+			@cloud_usage = rget "cloud-usage"
+		end
+		@cloud_usage
+	end
+
+
+	def rset(attribute,value)
+		key = "projects:#{@id}:"+attribute
+		$redis.del key
+		$redis.sadd key,value
+		$redis.smembers key
+	end
+
 	def assign_languages(languages)
-		$redis.del "projects:#{@id}:languages"
-		$redis.sadd "projects:#{@id}:languages",languages
-		@languages = $redis.smembers "projects:#{@id}:languages"
+		@languages = rset "languages",languages
 	end
 
 	def assign_frameworks(frameworks)
-		$redis.del "projects:#{@id}:frameworks"
-		$redis.sadd "projects:#{@id}:frameworks",frameworks
-		@frameworks = $redis.smembers "projects:#{@id}:frameworks"
+		@frameworks = rset "frameworks",frameworks
 	end
 
 	def assign_vcs(vcs)
-		$redis.del "projects:#{@id}:vcs"
-		$redis.sadd "projects:#{@id}:vcs",vcs
-		@vcs = $redis.smembers "projects:#{@id}:vcs"
+		@vcs = rset "vcs",vcs
 	end
 
 	def assign_build_tools(build_tools)
-		$redis.del "projects:#{@id}:build-tools"
-		$redis.sadd "projects:#{@id}:build-tools",build_tools
-		@build_tools = $redis.smembers "projects:#{@id}:build-tools"
+		@build_tools = rset "build-tools",build_tools
 	end
 
 	def assign_ci(ci)
-		$redis.del "projects:#{@id}:ci"
-		$redis.sadd "projects:#{@id}:ci",ci
-		@ci = $redis.smembers "projects:#{@id}:ci"
+		@ci = rset "ci",ci
 	end
 
 	def assign_infrastructure_management_tools(infrastructure)
-		$redis.del "projects:#{@id}:infrastructure-tools"
-		$redis.sadd "projects:#{@id}:infrastructure-tools",infrastructure
-		@infrastructure = $redis.smembers "projects:#{@id}:infrastructure-tools"
+		@infrastructure = rset "infrastructure-tools",infrastructure
+	end
+
+	def assign_operating_system(operating_system)
+	  @operating_system = rset "operating-system", operating_system
+	end
+
+	def assign_off_the_shelf_products(products)
+	  @off_the_shelf_products = rset "products",products
+	end
+
+	def assign_cloud_usage(cloud_usage)
+	  @cloud_usage = rset "cloud-usage",cloud_usage
 	end
 end
