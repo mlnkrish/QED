@@ -18,6 +18,7 @@ $(document).ready(
     $(".edit-icon").click(function(){
       var context = $(this).attr("id").split("-")[0];
       $("#input-"+context).show();
+      $("#input-"+context).focus();
       $("#"+context+" .myTagRemover").show();
       $("#"+context+"-edit-icon").hide();
       $("#"+context+"-done-icon").show();
