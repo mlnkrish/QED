@@ -48,7 +48,7 @@ describe "project" do
 			project.assign_languages ['Ruby','Java','C#']
 
 			saved_project = Project.find_by_id project.id
-			saved_project.languages.should =~ ['Ruby','Java','C#']
+			saved_project.languages.should =~ ['ruby','java','c#']
 		end
 
 		it "should assign frameworks to a project" do
@@ -56,7 +56,7 @@ describe "project" do
 			project.assign_frameworks ['Rails','Spring-MVC']
 
 			saved_project = Project.find_by_id project.id
-			saved_project.frameworks.should =~ ['Rails','Spring-MVC']
+			saved_project.frameworks.should =~ ['rails','spring-mvc']
 		end
 
 		it "should assign vcs to a project" do
@@ -64,7 +64,7 @@ describe "project" do
 			project.assign_vcs ['Git','CVS']
 
 			saved_project = Project.find_by_id project.id
-			saved_project.vcs.should =~ ['Git','CVS']
+			saved_project.vcs.should =~ ['git','cvs']
 		end
 
 		it "should assign build tools to a project" do
@@ -72,7 +72,7 @@ describe "project" do
 			project.assign_build_tools ['Maven','Gradle']
 
 			saved_project = Project.find_by_id project.id
-			saved_project.build_tools.should =~ ['Maven','Gradle']
+			saved_project.build_tools.should =~ ['maven','gradle']
 		end
 
 		it "should assign ci to a project" do
@@ -80,7 +80,7 @@ describe "project" do
 			project.assign_ci ['Go']
 
 			saved_project = Project.find_by_id project.id
-			saved_project.ci.should =~ ['Go']
+			saved_project.ci.should =~ ['go']
 		end
 
 		it "should assign infrastructure management tools to a project" do
@@ -88,7 +88,7 @@ describe "project" do
 			project.assign_infrastructure_management_tools ['Puppet','Chef']
 
 			saved_project = Project.find_by_id project.id
-			saved_project.infrastructure_tools.should =~ ['Puppet','Chef']
+			saved_project.infrastructure_tools.should =~ ['puppet','chef']
 		end
 	end
 end
