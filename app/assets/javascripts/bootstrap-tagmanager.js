@@ -26,7 +26,6 @@
    jQuery.fn.tagsManager = function (options) {
       var tagManagerOptions = {
          prefilled: null,
-         CapitalizeFirstLetter: false,
          preventSubmitOnEnter: true,
          typeahead: false,
          typeaheadAjaxSource: null,
@@ -177,14 +176,12 @@
       var pushTag = function (tag) {
          if (!tag || tag.length <= 0) return;
 
-         if (tagManagerOptions.CapitalizeFirstLetter && tag.length > 1) {
-            tag = tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase();
-         }
-
          // call the validator (if any) and do not let the tag pass if invalid
          if (tagManagerOptions.validator !== undefined) {
            if ( tagManagerOptions.validator(tag) !== true ) return;
          }
+
+         tag = tag.trim().toLowerCase();
 
          var tlis = obj.data("tlis");
          var tlid = obj.data("tlid");

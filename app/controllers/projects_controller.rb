@@ -21,61 +21,61 @@ class ProjectsController < ApplicationController
 
  def assign_languages
    project = Project.find_by_id params[:project_id]
-   project.assign_languages params[:data]
+   project.assign_languages params[:data].split(",")
    render :nothing => true
  end
 
  def assign_frameworks
    project = Project.find_by_id params[:project_id]
-   project.assign_frameworks params[:data]
+   project.assign_frameworks params[:data].split(",")
    render :nothing => true
  end
 
  def assign_vcs
    project = Project.find_by_id params[:project_id]
-   project.assign_vcs params[:data]
+   project.assign_vcs params[:data].split(",")
    render :nothing => true
  end
 
  def assign_ci
    project = Project.find_by_id params[:project_id]
-   project.assign_ci params[:data]
+   project.assign_ci params[:data].split(",")
    render :nothing => true
  end
 
  def assign_infrastructure_management_tools
    project = Project.find_by_id params[:project_id]
-   project.assign_infrastructure_management_tools params[:data]
+   project.assign_infrastructure_management_tools params[:data].split(",")
    render :nothing => true
  end
 
  def assign_build_tools
    project = Project.find_by_id params[:project_id]
-   project.assign_build_tools params[:data]
+   project.assign_build_tools params[:data].split(",")
    render :nothing => true
  end
 
  def assign_operating_system
    project = Project.find_by_id params[:project_id]
-   project.assign_operating_system params[:data]
+   project.assign_operating_system params[:data].split(",")
    render :nothing => true
  end
 
  def assign_off_the_shelf_products
    project = Project.find_by_id params[:project_id]
-   project.assign_off_the_shelf_products params[:data]
+   project.assign_off_the_shelf_products params[:data].split(",")
    render :nothing => true
  end
 
  def assign_cloud_usage
    project = Project.find_by_id params[:project_id]
-   project.assign_cloud_usage params[:data]
+   project.assign_cloud_usage params[:data].split(",")
    render :nothing => true
  end
 
  def assign_databases
    project = Project.find_by_id params[:project_id]
-   project.assign_databases params[:data]
+   project.assign_databases params[:data].split(",")
    render :nothing => true
  end
 

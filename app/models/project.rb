@@ -108,11 +108,13 @@ class Project
 		@databases
 	end
 
-
 	def rset(attribute,value)
 		key = "projects:#{@id}:"+attribute
 		$redis.del key
-		$redis.sadd key,value
+		if(!value.empty?)
+			$redis.sadd key,value.map {|tag| tag.strip.downcase}
+		end
+		
 		$redis.smembers key
 	end
 

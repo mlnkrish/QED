@@ -42,7 +42,7 @@ describe "project" do
 		end
 	end
 
-	describe "adding language to project" do
+	describe "adding technical attributes to aproject" do
 		it "should assign languages to a project" do
 			project = Project.create "world domination"
 			project.assign_languages ['Ruby','Java','C#']
@@ -50,25 +50,45 @@ describe "project" do
 			saved_project = Project.find_by_id project.id
 			saved_project.languages.should =~ ['Ruby','Java','C#']
 		end
-	end
 
-	describe "adding frameworks to project" do
-		it "should assign languages to a project" do
+		it "should assign frameworks to a project" do
 			project = Project.create "world domination"
 			project.assign_frameworks ['Rails','Spring-MVC']
 
 			saved_project = Project.find_by_id project.id
 			saved_project.frameworks.should =~ ['Rails','Spring-MVC']
 		end
-	end
 
-	describe "adding vcs to project" do
-		it "should assign languages to a project" do
+		it "should assign vcs to a project" do
 			project = Project.create "world domination"
 			project.assign_vcs ['Git','CVS']
 
 			saved_project = Project.find_by_id project.id
 			saved_project.vcs.should =~ ['Git','CVS']
+		end
+
+		it "should assign build tools to a project" do
+			project = Project.create "world domination"
+			project.assign_build_tools ['Maven','Gradle']
+
+			saved_project = Project.find_by_id project.id
+			saved_project.build_tools.should =~ ['Maven','Gradle']
+		end
+
+		it "should assign ci to a project" do
+			project = Project.create "world domination"
+			project.assign_ci ['Go']
+
+			saved_project = Project.find_by_id project.id
+			saved_project.ci.should =~ ['Go']
+		end
+
+		it "should assign infrastructure management tools to a project" do
+			project = Project.create "world domination"
+			project.assign_infrastructure_management_tools ['Puppet','Chef']
+
+			saved_project = Project.find_by_id project.id
+			saved_project.infrastructure_tools.should =~ ['Puppet','Chef']
 		end
 	end
 end
