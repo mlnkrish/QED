@@ -1,7 +1,7 @@
 class Project
 	attr_reader :id, :name, :languages, :frameworks, :vcs, :build_tools,
 							:ci, :infrastructure_tools, :operating_system, 
-							:off_the_shelf_products, :cloud_usage
+							:off_the_shelf_products, :cloud_usage,:databases
 
 	def initialize(params)
 		@id = params["id"]
@@ -101,6 +101,13 @@ class Project
 		@cloud_usage
 	end
 
+	def databases
+		if(@databases.nil?)
+			@databases = rget "db"
+		end
+		@databases
+	end
+
 
 	def rset(attribute,value)
 		key = "projects:#{@id}:"+attribute
@@ -143,5 +150,9 @@ class Project
 
 	def assign_cloud_usage(cloud_usage)
 	  @cloud_usage = rset "cloud-usage",cloud_usage
+	end
+
+	def assign_databases(databases)
+	  @databases = rset "db",databases
 	end
 end

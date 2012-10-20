@@ -16,7 +16,7 @@ $(document).ready(
     
 
     $(".edit-icon").click(function(){
-      var context = $(this).attr("id").split("-")[0];
+      var context = $(this).attr("id").split("-edit-icon")[0];
       $("#input-"+context).show();
       $("#input-"+context).focus();
       $("#"+context+" .myTagRemover").show();
@@ -26,7 +26,7 @@ $(document).ready(
     });
 
     $(".done-icon").click(function(){
-      var context = $(this).attr("id").split("-")[0];
+      var context = $(this).attr("id").split("-done-icon")[0];
       var updateUrl = $(this).attr("href");
       var dataToUpdate = $("#input-"+context).data("tlis").join(",");
       

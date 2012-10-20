@@ -1,107 +1,20 @@
-<div class="row">
-  <div id="language" class="span4">
-    <div class="well">
-      <h5>
-        Languages
-        <button id="language-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
-        <button id="language-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/languages"%>'>save</button>
-      </h5>
-      <div id="language-tags-container" class="clearfix"></div>
-      <input id="input-language" type="text" name="language-tags" value="<%= @project.languages.join(",")%>" class="language-tag-manager tagManager"/>
-    </div>
-  </div>
-  <div id="framework" class="span4">
-    <div class="well">
-      <h5>
-        Frameworks
-        <button id="framework-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
-        <button id="framework-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/frameworks"%>'>save</button>
-      </h5>
-      <div id="framework-tags-container" class="clearfix"></div>
-      <input id="input-framework" type="text" name="framework-tags" value="<%= @project.frameworks.join(",")%>" class="framework-tag-manager tagManager"/>
-    </div>
-  </div>
-  <div id="vcs" class="span4">
-    <div class="well">
-    <h5>
-      Version Control
-      <button id="vcs-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
-      <button id="vcs-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/vcs"%>'>save</button>
-    </h5>
-    <div id="vcs-tags-container" class="clearfix"></div>
-    <input id="input-vcs" type="text" name="vcs-tags" value="<%= @project.vcs.join(",")%>" class="vcs-tag-manager tagManager"/>
-  </div>
-  </div>
+<div class="row tag-row">
+  <%= tag_input(@project,"languages","Languages",@project.languages.join(",")) %>
+  <%= tag_input(@project,"frameworks","Framework",@project.frameworks.join(",")) %>
+  <%= tag_input(@project,"vcs","Version Control System",@project.vcs.join(",")) %>
 </div>
-<div class="row">
-  <div id="build" class="span4">
-    <div class="well">
-    <h5>
-      Build Tools
-      <button id="bt-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
-      <button id="bt-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/build-tools"%>'>save</button>
-    </h5>
-    <div id="bt-tags-container" class="clearfix"></div>
-    <input id="input-bt" type="text" name="bt-tags" value="<%= @project.build_tools.join(",")%>" class="bt-tag-manager tagManager"/>
-  </div>
-  </div>
-  <div id="ci" class="span4">
-    <div class="well">
-    <h5>
-      CI
-      <button id="ci-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
-      <button id="ci-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/ci"%>'>save</button>
-    </h5>
-    <div id="ci-tags-container" class="clearfix"></div>
-    <input id="input-ci" type="text" name="ci-tags" value="<%= @project.ci.join(",")%>" class="ci-tag-manager tagManager"/>
-  </div>
-  </div>
-  <div id="infrastructure" class="span4">
-    <div class="well">
-    <h5>
-      Infrastructure Management
-      <button id="infrastructure-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
-      <button id="infrastructure-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/infrastucture-management-tools"%>'>save</button>
-    </h5>
-    <div id="infrastructure-tags-container" class="clearfix"></div>
-    <input id="input-infrastructure" type="text" name="infrastructure-tags" value="<%= @project.infrastructure_tools.join(",")%>" class="infrastructure-tag-manager tagManager"/>
-  </div>
-  </div>
+<div class="row tag-row">
+  <%= tag_input(@project,"build-tools","Build Tools",@project.build_tools.join(",")) %>
+  <%= tag_input(@project,"ci","CI",@project.ci.join(",")) %>
+  <%= tag_input(@project,"infrastucture-management-tools","Infrastructure Management",@project.infrastructure_tools.join(",")) %>
 </div>
-<div class="row">
-  <div id="os" class="span4">
-    <div class="well">
-    <h5>
-      Operating System
-      <button id="os-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
-      <button id="os-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/operating-system"%>'>save</button>
-    </h5>
-    <div id="os-tags-container" class="clearfix"></div>
-    <input id="input-os" type="text" name="os-tags" value="<%= @project.operating_system.join(",")%>" class="os-tag-manager tagManager"/>
-  </div>
-  </div>
-  <div id="shelf" class="span4">
-    <div class="well">
-    <h5>
-      Off-The-Shelf Products
-      <button id="shelf-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
-      <button id="shelf-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/off-the-shelf-products"%>'>save</button>
-    </h5>
-    <div id="shelf-tags-container" class="clearfix"></div>
-    <input id="input-shelf" type="text" name="shelf-tags" value="<%= @project.off_the_shelf_products.join(",")%>" class="shelf-tag-manager tagManager"/>
-  </div>
-  </div>
-  <div id="cloud" class="span4">
-    <div class="well">
-    <h5>
-      Cloud Usage
-      <button id="cloud-edit-icon" title="edit" class="edit-icon btn btn-primary btn-mini" >edit</button>
-      <button id="cloud-done-icon" title="done" class="done-icon btn btn-success btn-mini hide" href='<%= "/projects/#{@project.id}/cloud-usage"%>'>save</button>
-    </h5>
-    <div id="cloud-tags-container" class="clearfix"></div>
-    <input id="input-cloud" type="text" name="cloud-tags" value="<%= @project.cloud_usage.join(",")%>" class="cloud-tag-manager tagManager"/>
-  </div>
-  </div>
+<div class="row tag-row">
+  <%= tag_input(@project,"databases","Data Stores",@project.databases.join(",")) %>
+  <%= tag_input(@project,"off-the-shelf-products","Off-The-Shelf Products",@project.off_the_shelf_products.join(",")) %>
+  <%= tag_input(@project,"cloud-usage","Cloud Usage",@project.cloud_usage.join(",")) %>
+</div>
+<div class="row tag-row">
+  <%= tag_input(@project,"operating-system","Operating Systems",@project.operating_system.join(",")) %>
 </div>
 <div class="row">
   <div class="span12">

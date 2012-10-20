@@ -23,6 +23,7 @@ Qed::Application.routes.draw do
   match 'projects/:project_id/operating-system' => 'projects#assign_operating_system', :via => :put
   match 'projects/:project_id/off-the-shelf-products' => 'projects#assign_off_the_shelf_products', :via => :put
   match 'projects/:project_id/cloud-usage' => 'projects#assign_cloud_usage', :via => :put
+  match 'projects/:project_id/databases' => 'projects#assign_databases', :via => :put
 
 
   # Sample resource route with options:

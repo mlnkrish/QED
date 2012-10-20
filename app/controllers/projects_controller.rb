@@ -73,4 +73,10 @@ class ProjectsController < ApplicationController
    render :nothing => true
  end
 
+ def assign_databases
+   project = Project.find_by_id params[:project_id]
+   project.assign_databases params[:data]
+   render :nothing => true
+ end
+
 end
