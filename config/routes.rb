@@ -12,7 +12,9 @@ Qed::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :projects 
+  resources :projects do
+    resources :posts, :controller => "project_posts"
+  end
 
   match 'projects/:project_id/languages' => 'projects#assign_languages', :via => :put
   match 'projects/:project_id/frameworks' => 'projects#assign_frameworks', :via => :put

@@ -1,9 +1,11 @@
-$(document).ready(
-	function () {
-  	$('#project-nav a').click(function (e) {
-  		e.preventDefault();
-  		$(this).tab('show');
-		})
+Qed.ShowProject = function(){
+
+  this.init = function(){
+
+    $('#project-nav a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    })
 
     $(".tagManager").each(function(){
       $(this).tagsManager({
@@ -13,7 +15,6 @@ $(document).ready(
         source: []
       });  
     });
-    
 
     $(".edit-icon").click(function(){
       var context = $(this).attr("id").split("-edit-icon")[0];
@@ -49,6 +50,6 @@ $(document).ready(
     });
 
     $(".myTagRemover").hide();
-    $(".tagManager").hide();
-
-})
+    $(".tagManager").hide();  
+  }
+}
