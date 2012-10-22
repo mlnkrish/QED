@@ -7,6 +7,8 @@ class ProjectPostsController < ApplicationController
 
   def create
     post = Post.create params[:title],params[:post_text],params[:post_tags].split(","),params[:project_id]
+    @project = Project.find_by_id params[:project_id]
+    @project.add_post post
     redirect_to :controller=>"posts", :action => :show, :id => post.id
   end
 

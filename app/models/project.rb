@@ -1,7 +1,7 @@
 class Project
 	attr_reader :id, :name, :languages, :frameworks, :vcs, :build_tools,
 							:ci, :infrastructure_tools, :operating_system, 
-							:off_the_shelf_products, :cloud_usage,:databases
+							:off_the_shelf_products, :cloud_usage,:databases,:posts
 
 	def initialize(params)
 		@id = params["id"]
@@ -30,6 +30,12 @@ class Project
 		all_projects_id.map do |id|
 			Project.find_by_id id
 		end 
+	end
+
+	def add_post(post)
+		posts #populate @posts if not done
+		added = $redis.sadd "projects:#{@id}:posts", post.id
+		@posts.push post if added
 	end
 
 
@@ -108,13 +114,20 @@ class Project
 		@databases
 	end
 
+	def posts
+		if(@posts.nil?)
+			all_post_ids = rget "posts"
+			@posts = all_post_ids.map {|id| Post.find_by_id id}
+		end
+		@posts
+	end
+
 	def rset(attribute,value)
 		key = "projects:#{@id}:"+attribute
 		$redis.del key
 		if(!value.empty?)
 			$redis.sadd key,value.map {|tag| tag.strip.downcase}
 		end
-		
 		$redis.smembers key
 	end
 

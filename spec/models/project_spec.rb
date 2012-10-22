@@ -91,4 +91,20 @@ describe "project" do
 			saved_project.infrastructure_tools.should =~ ['puppet','chef']
 		end
 	end
+
+	describe "adding posts" do
+		it "should add posts to a project" do
+			project = Project.create "world domination"
+			post1 = Post.create "title","im post text", ["t1","t2"], "12233-3344"
+			post2 = Post.create "title","im post text", ["t1","t2"], "12233-3344"
+			project.add_post post1
+			project.add_post post2
+
+			project.posts.should =~ [post1,post2]
+
+			saved_project = Project.find_by_id project.id
+			saved_project.posts.length.should == 2
+		end
+
+	end
 end

@@ -12,7 +12,7 @@ class Post
   def self.create(title,text,tags,project_id)
     id = SecureRandom.uuid
     $redis.hmset "posts:#{id}","id","#{id}","title","#{title}","text","#{text}",:project_id,"#{project_id}"
-    $redis.sadd "posts:#{id}:tags",tags.map {|t| t.strip.downcase} 
+    $redis.sadd "posts:#{id}:tags",tags.map {|t| t.strip.downcase} unless tags.empty?
     Post.new({:id => id,:text => text,:tags => tags,:title => title, :project_id => project_id})
   end
 

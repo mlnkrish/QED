@@ -16,12 +16,3 @@
 <div class="row tag-row">
   <%= tag_input(@project,"operating-system","Operating Systems",@project.operating_system.join(",")) %>
 </div>
-<div class="row">
-  <div class="span12">
-  <div class="page-header sub-heading">
-    <h5>Content
-      <%= link_to "Add New Post", new_project_post_url(@project.id), :class =>  "btn btn-primary btn-mini"%>
-    </h5>
-  </div>
-  </div>
-</div>

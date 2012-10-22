@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
 
-
   def show
     id = params[:id]
     @post = Post.find_by_id id
