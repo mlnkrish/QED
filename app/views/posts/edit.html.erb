@@ -1,7 +1,7 @@
-<div class="page-header">
-  <h3>New post</h3>
+ <div class="page-header">
+  <h3>Edit post</h3>
 </div>
- <%= form_tag(project_posts_path @project.id) do %>
+ <%= form_tag(post_path(@post.id), {:method => :put}) do %>
   <div class="control-group">
     <%= label_tag(:title, "Title:", :class => "control-label") %>
     <%= text_field_tag(:title, @post.title , :class => "controls input-xxlarge") %>
@@ -14,10 +14,10 @@
 
       <%= label_tag(:title, "Tags:", :class => "tag-manager control-label") %>
       <div id='tag-container' class='clearfix'></div>
-      <%= text_field_tag(:tag, @post.tags , :class => "controls",:id => "post-tags-input") %>
+      <%= text_field_tag(:tag, @post.tags.join(",") , :class => "controls",:id => "post-tags-input") %>
   </div>
    
-  <%= submit_tag("create",:class =>"btn btn-primary") %>
+  <%= submit_tag("update",:class =>"btn btn-primary") %>
  <% end %>
 
 

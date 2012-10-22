@@ -16,6 +16,8 @@ Qed::Application.routes.draw do
     resources :posts, :controller => "project_posts"
   end
 
+  resources :posts
+
   match 'projects/:project_id/languages' => 'projects#assign_languages', :via => :put
   match 'projects/:project_id/frameworks' => 'projects#assign_frameworks', :via => :put
   match 'projects/:project_id/vcs' => 'projects#assign_vcs', :via => :put

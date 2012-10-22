@@ -1,0 +1,20 @@
+<div class="page-header">
+  <h3><%= @post.title%>
+    <%= link_to "Edit", edit_post_url(@post.id), :class =>  "btn btn-primary btn-mini pull-right"%>
+  </h3>
+</div>
+
+<div id="content"></div>
+<input type="hidden" id="post-text" value="<%= @post.text%>"></input>
+
+<hr/>
+
+<h4>Tags</h4>
+<div id='tags-container' class='clearfix'></div>
+<input id="post-tags" name="tags" value="<%= @post.tags.join(',')%>"></input>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    new Qed.ShowPost().init();
+  })
+</script>
